@@ -31,12 +31,6 @@ class Merge extends Command
             return 1;
         }
 
-        // Do a quick sanity check on the output
-        if (!Str::contains($result->output(), 'APP_KEY')) {
-            $this->error('Infisical did not provide an APP_KEY, which is required for Laravel apps.');
-            return 1;
-        }
-
         // Base .env file is optional, but if it exists, we will merge with it
         $env = file_exists(base_path('.env'))
             ? file_get_contents(base_path('.env'))
